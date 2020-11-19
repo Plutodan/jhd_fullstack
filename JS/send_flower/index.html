@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <script>
+        class Flower{
+
+        }
+        //JSON Object
+        const kagome={//对象 object
+            name: '日暮戈薇', //字符串
+            age: 20, //数值 类型 Integer Number
+            character: ['勇敢','善良'], //数组Array JS里没有独立的数组对象，
+                //Array Object
+            hometown: '东京',
+            isSingle: false, //boolean 
+            boyfriend: '犬夜叉', //undefined未定义 概念都没有
+            house: null, //为空 内存分配了空间
+            receiveFlower: function(flower,sender){
+                //mood<80 则拒收
+                //开心收下
+                console.log(this.name + '收到花啦~' + '谢谢你' + sender.name);
+            }
+        }
+        const inuyasha={
+            name: '犬夜叉',
+            age: 20,
+            hometown: '战国',
+            isSingle: false,
+            //函数对象
+            //gf 参数 类型是对象JSON Object
+            sendFlower: function(gf){//gf是形参
+                const flowers= new Flower(11);
+                gf.receiveFlower(flowers,this);
+            }
+        }
+        const sango={
+            name:'珊瑚',
+            mood:80,//开心或不开心
+            receiveFlower: function(flower,sender){
+                // console.log('收到花啦~sango');
+                if(sender.name == 'inuyasha'){
+                    // console.log('已经帮你送给戈薇啦~');
+                    //定时器
+                    setTimeout(function(){
+                        sango.mood = 100;
+                        kagome.receiveFlower(flower,sender);
+                    },2000)
+                }else{
+                    console.log('不' + sender.name + ',我不帮你');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
